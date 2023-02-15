@@ -1,0 +1,38 @@
+--Create a store database
+
+CREATE TABLE Eric_Knits (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, production_time_in_days INTEGER, quantity_in_store INTEGER);
+
+INSERT INTO
+Eric_Knits
+
+VALUES
+(1, "Gryffindor Scarf", 40, 7, 1),
+(2, "Hufflepuff Scarf", 40, 7, 0),
+(3, "Ravenclaw Scarf", 40, 7, 2),
+(4, "Slytherin Scarf", 40, 7, 0),
+(5, "Grandma's Dishrag", 6, 1, 10),
+(6, "Fancy Knit Dishrag", 10, 1, 5),
+(7, "Adult Solid-Color Scarf", 25, 1, 7),
+(8, "Child Solid-Color Scarf", 10, 1, 3),
+(9, "Adult Solid-Color Hat", 15, 1, 4),
+(10, "Child Solid Color Hat", 10, 1, 4),
+(11, "Adult Mulit-Color Hat", 25, 1, 2),
+(12, "Child Multi-Color Hat", 20, 1, 0),
+(13, "Adult Multi-Color Scarf", 35, 1, 5),
+(14, "Child Multi-Color Scarf", 20, 1, 2),
+(15, "Tea Cozy", 12, 3, 0);
+
+--display the database ordered by price.
+SELECT * FROM Eric_Knits 
+ORDER BY price;
+
+--display in-stock items.
+SELECT SUM(quantity_in_store) AS "Total In Stock Items" FROM Eric_Knits;
+
+--what is the average price of items?
+SELECT AVG(price) FROM Eric_Knits;
+
+--what is the total price of all in-stock items?
+SELECT name,
+price*quantity_in_store
+AS "Total Price"
