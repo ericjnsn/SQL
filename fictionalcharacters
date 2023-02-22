@@ -1,0 +1,39 @@
+/* Create table about fictional characters and their books */
+
+CREATE TABLE fictional_characters (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    book_id TEXT);
+    
+INSERT INTO fictional_characters VALUES
+    (1, "Harry Potter", 1),
+    (2, "Katniss Everdeen", 2),
+    (3, "Ron Weasley", 1),
+    (4, "Peeta Mellark", 2),
+    (5, "Wade Watts", 3),
+    (6, "Bobby Pendragon", 4),
+    (7, "James Halliday", 3),
+    (8, "Aja Killian", 4),
+    (9, "Frodo Baggins", 5),
+    (10, "Samwise Gammgee", 5);
+    
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY,
+    title TEXT);
+    
+INSERT INTO books VALUES
+    (1, "Harry Potter"),
+    (2, "The Hunger Games"),
+    (3, "Ready Player One"),
+    (4, "Pendragon"),
+    (5, "The Lord of the Rings");
+    
+  /* I created a query to show which characters are in which books*?  
+    
+SELECT 
+    fictional_characters.name as Character_Name,
+    books.title as Book_Title
+FROM books
+JOIN fictional_characters
+ON fictional_characters.book_id = books.id
+ORDER BY books.title;
