@@ -1,1 +1,40 @@
+#In this SQL, I'm querying a databse with multiple tables in it to quantify statistics about customer and employee data, as well as information on artists and their music.
+
+#1. Show customers who are not from the United States.
+SELECT
+    FirstName,
+    LastName,
+    CustomerId,
+    Country
+FROM chinook.customers
+WHERE customers.Country <> "USA";
+
+#2. Show only customers from Brazil.
+SELECT
+    FirstName,
+    LastName,
+    CustomerId
+FROM chinook.customers
+WHERE customers.Country = "Brazil";
+
+#3. Find the Invoices of customers who are from Brazil.
+SELECT
+    customers.LastName,
+    customers.FirstName,
+    invoices.invoiceid,
+    invoices.InvoiceDate,
+    invoices.BillingCountry
+FROM customers
+JOIN invoices
+ON customers.CustomerId = invoices.CustomerId
+WHERE invoices.BillingCountry = "Brazil"
+ORDER BY customers.LastName asc;
+
+#4. Show the employees who are Sales Support Agents.
+SELECT
+    LastName,
+    FirstName,
+    Title
+FROM employees
+WHERE Title = "Sales Support Agent";
 
